@@ -20,7 +20,7 @@ def read_file(file_name):
             places = []
 
             line = file.readline().rstrip()
-            places_count = int(line[0])
+            places_count = int(line)
             for i in range(places_count):
                 line = file.readline().rstrip()
                 temp = []
@@ -40,9 +40,17 @@ def read_file(file_name):
     except FileNotFoundError:
         print(f"Tidak terdapat file dengan nama {file_name}. Harap masukan nama file yang valid!")
         places = False
+        matrix = False
 
     return places, matrix
 
+
+def ask_file():
+    places, matrix = input_places_file()
+    while (not places):
+        places, matrix = input_places_file()
+
+    return places, matrix
 
 # places, matrix = input_places_file()
 # print(places)
