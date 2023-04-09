@@ -10,8 +10,12 @@ def find_index(place_name, places):
     return index
 
 def find_distance(element1, element2):
-    delta_lat = element1[1][0] - element2[1][0]
-    delta_long = element1[1][1] - element2[1][1]
+    delta_lat = abs(element1[1][0] - element2[1][0])
+    if (delta_lat >= 180) :
+        delta_lat = 360 - delta_lat
+    delta_long = abs(element1[1][1] - element2[1][1])
+    if (delta_long >= 180) :
+        delta_long = 360 - delta_long
     distance = math.sqrt(pow(delta_lat, 2) + pow(delta_long, 2))
 
     return distance
