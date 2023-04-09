@@ -43,7 +43,7 @@ def UCS (matrix, start, goal):
     return None
 
 def astar(start_index, goal_index, places, matrix):
-    heuristic_distance_list = find_heuristic_distance(goal_index, places)
+    heuristic_distance_list = make_heuristic_distance_list(goal_index, places)
 
     # Initialize the first element of the queue
     prediction_distance = heuristic_distance_list[start_index]
