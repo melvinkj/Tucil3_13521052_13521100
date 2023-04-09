@@ -7,6 +7,11 @@ def main():
     # Ask for a valid input file
     places, matrix = ask_file()
     
+    print("Places: ")
+    i=0
+    for place in places:
+        i+=1
+        print(f"[{i}] {place[0]}")
     # Ask for a valid start and goal
     start_index, goal_index = ask_start_goal(places)
 
