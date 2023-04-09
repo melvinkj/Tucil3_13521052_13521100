@@ -90,12 +90,3 @@ def astar(start_index, goal_index, places, matrix):
         print(f"Cost: {best_element[1]}")
     else:
         print(f"No path found from node {places[start_index][0]} to node {places[goal_index][0]}")
-
-#debug
-start_node = 0
-goal_node = 4
-path = UCS(adj_matrix, start_node, goal_node)
-if path:
-    print(f"Shortest path from node {start_node} to node {goal_node}: {path}")
-else:
-    print(f"No path found from node {start_node} to node {goal_node}")
