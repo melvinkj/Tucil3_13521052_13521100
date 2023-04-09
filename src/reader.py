@@ -7,6 +7,7 @@ def input_places_file():
         places = read_file(file_name)
 
     return places
+
 def read_file(file_name):
     try:
         path = os.path.realpath(__file__)
@@ -43,7 +44,6 @@ def read_file(file_name):
         matrix = False
 
     return places, matrix
-
 
 def ask_file():
     places, matrix = input_places_file()
