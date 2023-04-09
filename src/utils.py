@@ -1,4 +1,7 @@
 import math
+import matplotlib.pyplot as plt
+import numpy as np
+import networkx as nx
 
 def find_index(place_name, places):
     index = -999
@@ -31,19 +34,75 @@ def find_heuristic_distance(goal_index, places):
 
 def ask_start_goal(places):
     # Ask for a valid start name
-    start_index = int(input("Masukan angka pilihan tempat asal: "))
+    start_index = int(input("Input starting point number: "))
     while (start_index<1 or start_index>len(places)):
-        print("Pilihan tidak ada dalam peta. Masukan nama tempat yang valid!")
-        start_index = int(input("Masukan angka pilihan tempat asal: "))
+        print("Input is invalid!")
+        start_index = int(input("Input starting point number: "))
 
     # Ask for a valid goal name
-    goal_index = int(input("Masukan angka pilihan tempat tujuan: "))
+    goal_index = int(input("Input destination number: "))
     while (goal_index<1 or goal_index>len(places) or goal_index==start_index):
         if(goal_index==start_index):
-            print("Pilihan tujuan harus berbeda dari tempat asal. Masukan nama tempat yang berbeda!")
-            goal_index = int(input("Masukan angka pilihan tempat tujuan: "))
+            print("Destination should be different from starting point. Input different destination!")
+            goal_index = int(input("Input destination number: "))
         else:
-            print("Pilihan tidak ada dalam peta. Masukan nama tempat yang valid!")
-            goal_index = int(input("Masukan angka pilihan tempat tujuan: "))
+            print("Input is invalid. Masukan nama tempat yang valid!")
+            goal_index = int(input("Input destination number: "))
 
     return start_index-1, goal_index-1
+
+def visualize(matrix,places, paths, start_index, goal_index):
+    graph =nx.Graph()
+    edges = solutionEdges(paths)
+
+    # write node places
+    placeNames = []
+    n=0
+    for place in places:
+        placeNames.append(str(place[0]))
+        graph.add_node(placeNames[n], color='r')
+        n+=1
+
+    # coloring edges
+    for i in range(len(matrix)):
+        for j in range(len(matrix[0])):
+            if(matrix[i][j]!=0):
+                if(checkEdges(i,j,edges)):
+                    graph.add_edge(placeNames[i], placeNames[j], color = 'blue', weight=matrix[i][j])
+                else:
+                    graph.add_edge(placeNames[i], placeNames[j], color = 'black', weight=matrix[i][j])
+    
+    # coloring nodes
+    color_map = []
+    for node in graph:
+        if node == places[start_index][0]:
+            color_map.append('red')
+        elif node == places[goal_index][0]:
+            color_map.append('green')
+        else: 
+            color_map.append('purple') 
+
+    # Create a layout
+    pos=nx.spring_layout(graph)
+    # Draw graph nodes
+    edges,colors = zip(*nx.get_edge_attributes(graph, 'color').items())
+    nx.draw(graph, pos, edgelist=edges, edge_color=colors, with_labels = True, font_weight = 'light', node_color = color_map, font_size= 10, verticalalignment = 'baseline')
+    edge_weight = nx.get_edge_attributes(graph, 'weight') # Get graph edges weights
+    # Draw graph edges
+    nx.draw_networkx_edge_labels(graph, pos, edge_labels = edge_weight)
+    print("Successfully visualize the graph. Close the NetworkX Visualization to continue!")
+    plt.show()
+
+def solutionEdges(paths):
+    solution =[]
+    if(len(paths)>1):
+        for i in range (len(paths)-1):
+            solution.append([paths[i],paths[i+1]])
+    return solution
+
+def checkEdges(node1, node2, solEdges):
+    # Check if two nodes are in the edges list
+    for i in range(len(solEdges)):
+        if((solEdges[i][0] == node1 and solEdges[i][1] == node2)or(solEdges[i][1] == node1 and solEdges[i][0] == node2)):
+            return True
+    return False
