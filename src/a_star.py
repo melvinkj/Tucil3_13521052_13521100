@@ -31,7 +31,7 @@ def astar(start_index, goal_index, places, matrix):
                 if (current_element[1] < best_element[1]):
                     best_element = current_element
 
-        else :
+        elif ((not path_found) or (path_found and current_element[0] < best_element[0])):
             for i in range(len(matrix)):
                 # if i hasn't been visited and has connection to the last node in the current_element
                 if ((i not in current_element[3]) and (matrix[current_element[2]][i] != 0)):
