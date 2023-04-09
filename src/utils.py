@@ -1,11 +1,11 @@
 import math
 
-def find_index(nama_place, places):
-    index = 0
-    for object in places:
-        if (object[0] == nama_place):
+def find_index(place_name, places):
+    index = -999
+    for i in range(len(places)):
+        if (places[i][0] == place_name):
+            index = i
             break
-        index += 1
 
     return index
 
@@ -25,4 +25,22 @@ def find_heuristic_distance(goal_index, places):
         
     return heuristic_distance_list
 
+def ask_start_goal(places):
+    # Ask for a valid start name
+    start_name = input("Masukan nama tempat asal: ")
+    start_index = find_index(start_name, places)
+    while (find_index(start_name, places) == -999):
+        print("Nama tempat asal tidak ada dalam peta. Masukan nama tempat yang valid!")
+        start_name = input("Masukan nama tempat asal: ")
+        start_index = find_index(start_name, places)
 
+    # Ask for a valid goal name
+    goal_name = input("Masukan nama tempat tujuan: ")
+    goal_index = find_index(goal_name, places)
+    while (find_index(goal_name, places) == -999):
+        print("Nama tempat tujuan tidak ada dalam peta. Masukan nama tempat yang valid!")
+        goal_name = input("Masukan nama tempat tujuan: ")
+        goal_index = find_index(goal_name, places)
+
+
+    return start_index, goal_index
