@@ -31,20 +31,19 @@ def find_heuristic_distance(goal_index, places):
 
 def ask_start_goal(places):
     # Ask for a valid start name
-    start_name = input("Masukan nama tempat asal: ")
-    start_index = find_index(start_name, places)
-    while (find_index(start_name, places) == -999):
-        print("Nama tempat asal tidak ada dalam peta. Masukan nama tempat yang valid!")
-        start_name = input("Masukan nama tempat asal: ")
-        start_index = find_index(start_name, places)
+    start_index = int(input("Masukan angka pilihan tempat asal: "))
+    while (start_index<1 or start_index>len(places)):
+        print("Pilihan tidak ada dalam peta. Masukan nama tempat yang valid!")
+        start_index = int(input("Masukan angka pilihan tempat asal: "))
 
     # Ask for a valid goal name
-    goal_name = input("Masukan nama tempat tujuan: ")
-    goal_index = find_index(goal_name, places)
-    while (find_index(goal_name, places) == -999):
-        print("Nama tempat tujuan tidak ada dalam peta. Masukan nama tempat yang valid!")
-        goal_name = input("Masukan nama tempat tujuan: ")
-        goal_index = find_index(goal_name, places)
+    goal_index = int(input("Masukan angka pilihan tempat tujuan: "))
+    while (goal_index<1 or goal_index>len(places) or goal_index==start_index):
+        if(goal_index==start_index):
+            print("Pilihan tujuan harus berbeda dari tempat asal. Masukan nama tempat yang berbeda!")
+            goal_index = int(input("Masukan angka pilihan tempat tujuan: "))
+        else:
+            print("Pilihan tidak ada dalam peta. Masukan nama tempat yang valid!")
+            goal_index = int(input("Masukan angka pilihan tempat tujuan: "))
 
-
-    return start_index, goal_index
+    return start_index-1, goal_index-1
