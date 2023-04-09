@@ -1,10 +1,7 @@
 from utils import *
 from queue import PriorityQueue as PQ
 
-def astar(start_name, goal_name, places, matrix):
-    start_index = find_index(start_name, places)
-    goal_index = find_index(goal_name, places)
-
+def astar(start_index, goal_index, places, matrix):
     heuristic_distance_list = find_heuristic_distance(goal_index, places)
 
     # Initialize the first element of the queue
@@ -37,7 +34,7 @@ def astar(start_name, goal_name, places, matrix):
         else :
             for i in range(len(matrix)):
                 # if i hasn't been visited and has connection to the last node in the current_element
-                if ((i not in current_element[3]) and (matrix[current_element[2]][i] != -999)):
+                if ((i not in current_element[3]) and (matrix[current_element[2]][i] != 0)):
                     new_prediction_distance = current_element[1] + heuristic_distance_list[i]
                     new_passed_distance = current_element[1] + matrix[current_element[2]][i]
                     new_curent_index = i
@@ -48,7 +45,7 @@ def astar(start_name, goal_name, places, matrix):
                     queue.put(new_element)
                         
     if path_found:
-        print(f"Shortest path from node {start_name} to node {goal_name}: {best_element[3]}")
+        print(f"Shortest path from node {places[start_index][0]} to node {places[goal_index][0]}: {best_element[3]}")
         print(f"Cost: {best_element[1]}")
     else:
-        print(f"No path found from node {start_name} to node {goal_name}")
+        print(f"No path found from node {places[start_index][0]} to node {places[goal_index][0]}")
