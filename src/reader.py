@@ -1,9 +1,11 @@
 import os
+from flask import Flask, render_template
+import numpy as np
 
 def input_places_file():
     places = False
     while (not places):
-        file_name = input("Masukkan nama file (dengan .txt): ")
+        file_name = input("Input file name (with .txt): ")
         places = read_file(file_name)
 
     return places
@@ -30,7 +32,7 @@ def read_file(file_name):
                 coordinate = [float(num) for num in line.split(' ')]
                 temp.append(coordinate)
                 places.append(temp)
-
+            
             matrix = []
             for i in range(places_count):
                 line = file.readline().rstrip()
@@ -39,7 +41,7 @@ def read_file(file_name):
 
 
     except FileNotFoundError:
-        print(f"Tidak terdapat file dengan nama {file_name}. Harap masukan nama file yang valid!")
+        print(f"No such file with '{file_name}'. Please input valid filename!")
         places = False
         matrix = False
 
@@ -51,7 +53,3 @@ def ask_file():
         places, matrix = input_places_file()
 
     return places, matrix
-
-# places, matrix = input_places_file()
-# print(places)
-# print(matrix)
