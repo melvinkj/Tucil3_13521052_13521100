@@ -32,7 +32,7 @@ def main():
         else:
             print(f"No path found from node {start_index} to node {goal_index}")
     else:
-        astar(start_index, goal_index, places, matrix)
+        cost, paths = astar(start_index, goal_index, places, matrix)
 
     visualize(matrix,places,paths,start_index,goal_index)
 
