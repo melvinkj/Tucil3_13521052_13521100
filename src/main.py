@@ -44,4 +44,6 @@ while True:
         print("Invalid Input\nDo you want to find another route? (Y/N)")
         choice = input("Choice: ")
     if(choice=='N' or choice=='n'):
+        print("Thanks for using our program!")
         break
+    print("=========================================")
