@@ -19,10 +19,11 @@ def UCS (matrix, start, goal):
     path = []
     path.append(start)
     q.put((0, start, path))
+    visited = set()
 
     while not q.empty():
         cost, currNode, currPath = q.get()
-
+        visited.add(currNode)
         if(currNode==goal):
             return cost, currPath
         
@@ -33,14 +34,14 @@ def UCS (matrix, start, goal):
                 neighbors.append(i)
 
         for neighbor in neighbors:
-            if(visitedNode(neighbor, currPath)):
+            if((neighbor not in currPath) and (neighbor not in visited)):
                 # If neighbor is not visited before, push it to the priority queue with its cost and path
                 new_cost = cost + matrix[currNode][neighbor]  
                 new_path = currPath + [neighbor]
                 # Calculate cost to reach neighbor from current node
                 q.put((new_cost, neighbor,new_path))
 
-    return None
+    return -999,None
 
 def astar(start_index, goal_index, places, matrix):
     heuristic_distance_list = make_heuristic_distance_list(goal_index, places)
