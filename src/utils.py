@@ -92,13 +92,14 @@ def visualize(matrix,places, paths, start_index, goal_index):
             color_map.append('purple') 
 
     # Create a layout
-    pos=nx.spring_layout(graph)
+    pos=nx.spring_layout(graph, scale=2)
     # Draw graph nodes
     edges,colors = zip(*nx.get_edge_attributes(graph, 'color').items())
     nx.draw(graph, pos, edgelist=edges, edge_color=colors, with_labels = True, font_weight = 'light', node_color = color_map, font_size= 10, verticalalignment = 'baseline')
     edge_weight = nx.get_edge_attributes(graph, 'weight') # Get graph edges weights
     # Draw graph edges
     nx.draw_networkx_edge_labels(graph, pos, edge_labels = edge_weight)
+    print("Node's Colors:\nRed is starting point and green is goal")
     print("Successfully visualize the graph. Close the NetworkX Visualization to continue!")
     plt.show()
 
