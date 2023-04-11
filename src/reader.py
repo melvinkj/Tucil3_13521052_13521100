@@ -14,7 +14,7 @@ def read_file(file_name):
     try:
         path = os.path.realpath(__file__)
         dir = os.path.dirname(path)
-        dir = dir.replace('src', 'input')
+        dir = dir.replace('src', 'test')
         os.chdir(dir)
         with open(dir + "\\" + file_name) as file:
             # lines = file.readlines()
@@ -58,7 +58,7 @@ def read_file_gui(file_name):
     try:
         path = os.path.realpath(__file__)
         dir = os.path.dirname(path)
-        dir = dir.replace('src', 'input')
+        dir = dir.replace('src', 'test')
         os.chdir(dir)
         with open(file_name) as file:
             # lines = file.readlines()
