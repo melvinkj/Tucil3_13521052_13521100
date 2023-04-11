@@ -24,6 +24,7 @@ def UCS (matrix, start, goal):
     while not q.empty():
         cost, currNode, currPath = q.get()
         visited.add(currNode)
+
         if(currNode==goal):
             return cost, currPath
         
@@ -59,12 +60,11 @@ def astar(start_index, goal_index, places, matrix):
 
     # Initialize the state of solution
     path_found = False
-    visited_node_index = []
+    visited_node_index = set()
 
     while not path_found and not queue.empty():
         current_element = queue.get()
-        visited_node_index.append(current_element[2])
-
+        visited_node_index.add(current_element[2])
         # Check if current_element's last node is destination
         if (current_element[2] == goal_index):
                 solution_element = current_element
@@ -83,9 +83,6 @@ def astar(start_index, goal_index, places, matrix):
                     queue.put(new_element)
                         
     if path_found:
-        # print(f"Shortest path from node {places[start_index][0]} to node {places[goal_index][0]}: {solution_element[3]}")
-        # print(f"Cost: {solution_element[1]}")
-        return solution_element[1], solution_element
+        return solution_element[1], solution_element[3]
     else:
-        # print(f"No path found from node {places[start_index][0]} to node {places[goal_index][0]}")
-        return None
+        return -999, None
