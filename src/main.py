@@ -33,8 +33,15 @@ def main():
             print(f"No path found from node {start_index} to node {goal_index}")
     else:
         cost, paths = astar(start_index, goal_index, places, matrix)
+        if paths:
+            print(f"Shortest path from node {start_index} to node {goal_index}: {paths}")
+            print(f"Cost: {cost}")
+        else:
+            print(f"No path found from node {start_index} to node {goal_index}")
+    print()
 
-    visualize(matrix,places,paths,start_index,goal_index)
+    if paths:
+        visualize(matrix,places,paths,start_index,goal_index)
 
 while True:
     main()
