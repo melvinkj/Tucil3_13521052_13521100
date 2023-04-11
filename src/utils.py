@@ -12,6 +12,9 @@ def find_index(place_name, places):
 
     return index
 
+def find_name(index, places):
+    return places[index][0]
+
 def find_distance(element1, element2):
     earth_radius = 6317             #radius in kilometers
     delta_lat = abs(element1[1][0] - element2[1][0])
