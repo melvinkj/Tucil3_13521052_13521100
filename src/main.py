@@ -4,10 +4,25 @@ from utils import *
 import matplotlib.pyplot as plt
 import numpy as np
 import networkx as nx
+from bonus import *
 
 def main():
+
+    print("======= Main Menu =======")
+    print("1. Input through file")
+    print("2. Input through map")
+    menu = int(input("Choose the menu number : "))
+    while(menu!=1 and menu!=2):
+        print("Invalid input. Please enter a valid input!")
+        menu = int(input("Choose the menu number : "))
+
+    if (menu == 1) :
+        places, matrix = ask_file()
+    else :
+        places, matrix, connection_list = bonus()
+
+    
     # Ask for a valid input file
-    places, matrix = ask_file()
     
     print("Places: ")
     i=0
@@ -40,9 +55,11 @@ def main():
             print(f"No path found from node {start_index} to node {goal_index}")
     print()
 
-    if paths:
-        visualize(matrix,places,paths,start_index,goal_index)
-
+    if (menu == 1):
+        if paths:
+            visualize(matrix,places,paths,start_index,goal_index)
+    else :
+        map_visualizer(places, connection_list, start_index, goal_index, paths)
 while True:
     main()
     print("\nDo you want to find another route? (Y/N)")
