@@ -60,9 +60,17 @@ $ python gui.py
 
 ## **Screenshot**
 
-<img src="doc/home1.jpg"> 
-<img src="doc/home2.jpg"> 
-<img src="doc/fig.jpg"> 
+1. Command Line Interface (CLI)
+<img src="doc/cli_nonbonus.jpg"> 
+With Bonus
+<img src="doc/cli_bonus (2).jpg"> 
+<img src="doc/cli_bonus (1).jpg"> 
+<img src="doc/cli_bonus.jpg"> 
+2. Graphical User Interface (GUI)
+<img src="doc/gui.jpg"> 
+3. Bonus Map Visualizer
+<img src="doc/map_bonus.jpg"> 
+
 
 
 ## **Program Structure**
