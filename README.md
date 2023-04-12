@@ -1,6 +1,5 @@
 # Finding Most Optimal Path using UCS and A* Algorithm
-## Tugas Kecil 3 - Strategi Algoritma 2022/2023
-Tugas Kecil Mata Kuliah IF2211 Strategi Algoritma 2023 - Path Finder
+Tugas Kecil 3 Mata Kuliah IF2211 Strategi Algoritma 2023 - Path Finder
 
 ## **Table of Contents**
 * [General Information](#general-information)
@@ -8,7 +7,7 @@ Tugas Kecil Mata Kuliah IF2211 Strategi Algoritma 2023 - Path Finder
 * [How to Run and Compile (Windows)](#how-to-run-and-compile-windows)
 * [Screenshot](#screenshot)
 * [Program Structure](#program-structure)
-* [Author](#author)
+* [Authors](#authors)
 
 ## **General Information**
 >Python program that finds the shortest path between two points on a map using two popular graph search algorithms - Uniform Cost Search (UCS) and A* Algorithm. The program takes a map as input, represented as a weighted graph, and applies the selected algorithm to find the shortest path from a source point to a destination point.
