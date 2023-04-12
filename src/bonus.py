@@ -63,7 +63,7 @@ def bonus():
                     valid = True
                     temp.append(connection1-1)
                 else :
-                    print("Invalid inpu. Please enter a valid input!")
+                    print("Invalid input. Please enter a valid input!")
                     
                 
             valid = False
@@ -73,7 +73,7 @@ def bonus():
                     valid = True
                     temp.append(connection2-1)
                 else :
-                    print("Invalid inpu. Please enter a valid input!")
+                    print("Invalid input. Please enter a valid input!")
             
             adjacency_matrix[connection1-1][connection2-1] = 1
             adjacency_matrix[connection2-1][connection1-1] = 1
