@@ -80,9 +80,9 @@ def visualize(matrix,places, paths, start_index, goal_index):
         for j in range(len(matrix[0])):
             if(matrix[i][j]!=0):
                 if(checkEdges(i,j,edges)):
-                    graph.add_edge(placeNames[i], placeNames[j], color = 'blue', weight=matrix[i][j])
+                    graph.add_edge(placeNames[i], placeNames[j], color = 'blue', weight=round(matrix[i][j], 2))
                 else:
-                    graph.add_edge(placeNames[i], placeNames[j], color = 'black', weight=matrix[i][j])
+                    graph.add_edge(placeNames[i], placeNames[j], color = 'black', weight=round(matrix[i][j], 2))
     
     # coloring nodes
     color_map = []
