@@ -69,7 +69,7 @@ class App(customtkinter.CTk):
         self.specs_window = None
 
         # Main window configurations
-        self.title("Proximate")
+        self.title("Path Finder")
         self.minsize(910, 625)
 
         # ============ create two frames ============
@@ -241,23 +241,22 @@ class App(customtkinter.CTk):
                                                                       justify="left")
         self.cost_output_label.grid(row=1, column=2, padx=(0, 10), pady=(0, 20))
         
-        self.distance_label = customtkinter.CTkLabel(master=self.output_frame,
-                                                               text="Distance: ",
-                                                               font=output_font,
-                                                               anchor="w",
-                                                               justify="left")
-        self.distance_label.grid(row=2, column=1, padx=(20, 10), pady=(0, 20))
+        # self.distance_label = customtkinter.CTkLabel(master=self.output_frame,
+        #                                                        text="Distance: ",
+        #                                                        font=output_font,
+        #                                                        anchor="w",
+        #                                                        justify="left")
+        # self.distance_label.grid(row=2, column=1, padx=(20, 10), pady=(0, 20))
 
-        self.distance_output_label = customtkinter.CTkLabel(master=self.output_frame,
-                                                                      text=f'{App.distance}',
-                                                                      font=output_font,
-                                                                      text_color="green",
-                                                                      anchor="w",
-                                                                      justify="left")
-        self.distance_output_label.grid(row=2, column=2, padx=(0, 10), pady=(0, 20))
+        # self.distance_output_label = customtkinter.CTkLabel(master=self.output_frame,
+        #                                                               text=f'{App.distance}',
+        #                                                               font=output_font,
+        #                                                               text_color="green",
+        #                                                               anchor="w",
+        #                                                               justify="left")
+        # self.distance_output_label.grid(row=2, column=2, padx=(0, 10), pady=(0, 20))
 
 
-        
     
     def insertFile(self):        
         # open file
