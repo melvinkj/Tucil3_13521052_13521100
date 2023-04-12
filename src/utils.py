@@ -43,6 +43,7 @@ def make_heuristic_distance_list(goal_index, places):
 
 def ask_start_goal(places):
     # Ask for a valid start name
+    print()
     start_index = int(input("Input starting point number: "))
     while (start_index<1 or start_index>len(places)):
         print("Input is invalid!")

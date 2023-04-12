@@ -26,6 +26,7 @@ def print_places(places):
         print(f"[{i}] {place[0]}")
 
 def choose_algorithm():
+    print()
     print("Choose algorithm to calculate shortest route:")
     print("[1] UCS\n[2] A*")
     inp = int(input("Choice: "))
@@ -46,7 +47,7 @@ def algorithm_executor(inp, places, matrix, start_index, goal_index):
     # Print result    
     if paths:
         print(f"Shortest path from node {start_index+1} to node {goal_index+1}: {[(path+1) for path in paths]}")
-        print(f"Cost: {cost}")
+        print(f"Cost: {cost} km")
     else:
         print(f"No path found from node {start_index+1} to node {goal_index+1}")
     
