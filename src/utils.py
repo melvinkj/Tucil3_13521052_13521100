@@ -23,8 +23,12 @@ def find_distance(element1, element2):
     delta_long = abs(element1[1][1] - element2[1][1])
     if (delta_long >= 180) :
         delta_long = 360 - delta_long
-    angle = math.sqrt(pow(delta_lat, 2) + pow(delta_long, 2))
-    distance = math.pi * (angle/180) * earth_radius
+
+    radlat = (delta_lat) * math.pi / 180
+    radlon = (delta_long) * math.pi/180
+
+    haversine = (math.sin(radlat / 2))**2 + math.cos(element1[1][0] * math.pi/180) * math.cos(element2[1][0] * math.pi/180) * (math.sin(radlon / 2))**2
+    distance = 2 * earth_radius * math.asin(haversine**0.5)
 
     return distance
 
