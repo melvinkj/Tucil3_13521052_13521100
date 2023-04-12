@@ -42,35 +42,21 @@ $ pip install pandas
 $ git clone https://github.com/melvinkj/Tucil3_13521052_13521100.git
 ```
 2. Open this repository in terminal
-### **Compile (optional)**
-
-1. Open terminal in root directory, navigate to 'src' directory. <br>
-```sh
+### **Run**
+1. Change the directory to the 'src' folder <br>
+```sh 
 $ cd src
 ```
-2. Run the following command. The compiled binary executable will be located in the 'bin' folder <br>
-```sh
+
+2. Run program from CLI<br>
+```sh 
 $ python main.py
 ```
-or if you want to view from GUI
-```sh
+
+3. Run program from GUI<br>
+```sh 
 $ python gui.py
 ```
-4. Alternatively, execute 'build.bat' from root directory of repository
-```sh
-$ ./build.bat
-```
-### **Run**
-1. Change the directory to the 'bin' folder <br>
-```sh 
-$ cd bin
-```
-
-2. Run the program (or open file *main.exe* from file explorer)<br>
-```sh 
-$ ./main.exe
-```
-
 
 ## **Screenshot**
 
