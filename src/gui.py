@@ -360,7 +360,7 @@ class App(customtkinter.CTk):
                         paths+= " -> "
                 
                 self.path_output_label.configure(text =f'\n{paths}')
-                self.cost_output_label.configure(text =f'{App.cost}')
+                self.cost_output_label.configure(text =f'{App.cost} km')
 
             else:
                 self.path_output_label.configure(text= "\n-------------------")
