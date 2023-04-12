@@ -1,27 +1,27 @@
 12
-Pertigaan_Tamansari
+Pertigaan Tamansari
 -6.884893 107.611445
-Graha_Ariadi
+Graha Ariadi
 -6.885191 107.613017
-Persimpangan_Dago
+Persimpangan Dago
 -6.885257 107.613733
-Pertigaan_Dayang_Sumbi
+Pertigaan Dayang Sumbi
 -6.887256 107.611540
 Dekoruma
 -6.887386 107.613611
-SBM_ITB
+SBM ITB
 -6.887910 107.608289
-BNI_ITB
+BNI ITB
 -6.893882 107.608450
-Taman_Ganesha
+Taman Ganesha
 -6.893230 107.610447
-Parkiran_SR
+Parkiran SR
 -6.893605 107.611944
 Borromeus
 -6.893780 107.613036
-Ganesha_Mocktail
+Ganesha Mocktail
 -6.894759 107.611723
-Angkringan_MasJo
+Angkringan MasJo
 -6.894883 107.608839
 0.0 0.175 0.0 0.261 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
 0.175 0.0 0.079 0.279 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0

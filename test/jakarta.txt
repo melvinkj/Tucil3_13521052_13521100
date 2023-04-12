@@ -1,33 +1,33 @@
 15
-Perempatan_Gandaria
+Perempatan Gandaria
 -6.245131 106.788753
-Haje_Coffee
+Haje Coffee
 -6.246568 106.791361
-Pave_Bistro
+Pave Bistro
 -6.246584 106.791921
-Circle_K
+Circle K
 -6.243914 106.791703
-RS_Gandaria
+RS Gandaria
 -6.244357 106.790184
-Senorita_Steak
+Senorita Steak
 -6.244625 106.789645
-Nasi_Gule_PakDe
+Nasi Gule PakDe
 -6.244878 106.789209
 Gultik
 -6.246105 106.791314
-BC_Labs_Sky
+BC Labs Sky
 -6.245636 106.791288
-Djakarta_BarberShop
+Djakarta BarberShop
 -6.245589 106.791838
-Taman_Gandaria_Tengah
+Taman Gandaria Tengah
 -6.245394 106.790106
-Beranda_Kitchen
+Beranda Kitchen
 -6.245254 106.791829
-Bunderan_Taman
+Bunderan Taman
 -6.244802 106.790382
-Studio_KBK
+Studio KBK
 -6.245968 106.790115
-Restoran_Kebayoran
+Restoran Kebayoran
 -6.246423 106.789829
 0.0 0.0 0.0 0.0 0.0 0.0 0.057 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.185 
 0.0 0.0 0.061 0.0 0.0 0.0 0.0 0.051 0.0 0.0 0.0 0.0 0.0 0.0 0.169 

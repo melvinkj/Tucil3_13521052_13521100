@@ -1,35 +1,35 @@
 16
-Asia_Afrika
+Asia Afrika
 -6.921141 107.607668
-Otto_Iskandar
+Otto Iskandar
 -6.920768 107.604056
-Pasar_Baru
+Pasar Baru
 -6.918263 107.604216
 Banceuy
 -6.919038 107.606670
-Kantor_Pos
+Kantor Pos
 -6.920995 107.606441
-Alun_alun
+Alun alun
 -6.922551 107.607619
-Jl_Homan
+Jl Homan
 -6.922771 107.609810
-Jl_Pangarang
+Jl Pangarang
 -6.925376 107.610599
-Cuci_Motor_Pangarang
+Cuci Motor Pangarang
 -6.926075 107.610524
-SMP_43_Bandung
+SMP 43 Bandung
 -6.925835 107.607071
-Toko_Om_Opay
+Toko Om Opay
 -6.924356 107.607253
-Grand_Yogya
+Grand Yogya
 -6.924317 107.606160 
-Alfamart_Otto
+Alfamart Otto
 -6.923950 107.603842 
-Parahyangan_Plaza
+Parahyangan Plaza
 -6.922388 107.606404 
-Pertigaan_Dewi_Sartika
+Pertigaan Dewi Sartika
 -6.923443 107.606298 
-Kios_bunga_Eziflorist
+Kios bunga Eziflorist
 -6.923100 107.603892 
 0.0 0.0 0.0 0.0 0.135 0.156 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
 0.0 0.0 0.277 0.0 0.262 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.258 
