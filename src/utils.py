@@ -83,7 +83,6 @@ def make_connection_list(adjacency_matrix):
 
                 if (not exist):
                     connection_list.append([i, j]) 
-    print(connection_list)
     return connection_list
 
 
