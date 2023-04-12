@@ -79,11 +79,6 @@ With Bonus
 ┣ doc
  ┃ ┗ doc.txt
  ┣ src
- ┃ ┣ __pycache__
- ┃ ┃ ┣ algorithm.cpython-311.pyc
- ┃ ┃ ┣ bonus.cpython-311.pyc
- ┃ ┃ ┣ reader.cpython-311.pyc
- ┃ ┃ ┗ utils.cpython-311.pyc
  ┃ ┣ algorithm.py
  ┃ ┣ bonus.py
  ┃ ┣ gui.py
