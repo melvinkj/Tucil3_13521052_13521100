@@ -113,9 +113,9 @@ if __name__ == '__main__':
     print("WELCOME!")
     while True:
         main()
-        choice = input("\nDo you want to find another route on another map? (y/n):")
+        choice = input("\nDo you want to find another route on another map? (y/n): ")
         while (choice!='y' and choice!='Y' and choice!='n' and choice!='N'):
-            choice = input("Invalid Input\nDo you want to find another route on another map? (y/n)")
+            choice = input("Invalid Input\nDo you want to find another route on another map? (y/n): ")
         if(choice=='N' or choice=='n'):
             print("\nThanks for using our program!")
             break
