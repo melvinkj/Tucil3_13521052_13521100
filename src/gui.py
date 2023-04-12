@@ -11,6 +11,7 @@ from pathlib import Path
 import algorithm as algo
 import reader
 import utils
+import bonus
 import os
 import networkx as nx
 
@@ -48,7 +49,7 @@ class App(customtkinter.CTk):
 
     # Output variables 
     distance = "0 m"
-    final_path = "-------------------"
+    final_path = None
     cost = "0"    
 
     def __init__(self):
@@ -164,7 +165,8 @@ class App(customtkinter.CTk):
         # Start button
         self.start_button = customtkinter.CTkButton(master=self.left_frame,
                                                     text="Bonus",
-                                                    font=button_font)
+                                                    font=button_font,
+                                                    command = self.map_bonus)
         self.start_button.grid(row=13, column=0, pady=5, padx=20)
 
 
@@ -219,7 +221,7 @@ class App(customtkinter.CTk):
         self.path_label.grid(row=0, column=1, padx=(20, 10), pady=(20, 0))
 
         self.path_output_label = customtkinter.CTkLabel(master=self.output_frame,
-                                                                      text=f'{App.final_path}',
+                                                                      text="\n-------------------",
                                                                       font=output_font,
                                                                       text_color="green",
                                                                       anchor="w",
@@ -361,12 +363,32 @@ class App(customtkinter.CTk):
                 self.cost_output_label.configure(text =f'{App.cost}')
 
             else:
-                self.path_output_label.configure(text ="\nNo Path was Found!", color = 'red')
+                self.path_output_label.configure(text= "\n-------------------")
                 self.cost_output_label.configure(text ="0")
+                self.validation_label.configure(text="No Path was Found!",
+                                                text_color="red")
         else:
             self.validation_label.configure(text="Input valid file first!",
                                             text_color="red")
         self.validation_label.grid(row=10, column=0, pady=(0, 10), padx=20)
+
+    def map_bonus(self):
+        """
+        Start bonus
+        """
+        if ((App.places and App.adjMatrix) and ((App.start_index!=-999 and App.goal_index!=-999))):
+            if(App.final_path):
+                connection_list = utils.make_connection_list(App.adjMatrix)
+                bonus.map_visualizer(App.places, connection_list, App.start_index, App.goal_index, App.final_path)
+                self.validation_label.configure(text="Open Your Local Host website!",
+                                                text_color="green")
+            else:
+                self.validation_label.configure(text="No Path was Found!",
+                                                text_color="red")
+        else:
+            self.validation_label.configure(text="Input valid location first!",
+                                            text_color="red")
+            
 
     def optionmenu_start(self, start):
         if(App.places):
