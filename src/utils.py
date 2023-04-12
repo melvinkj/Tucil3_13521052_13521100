@@ -72,18 +72,18 @@ def make_connection_list(adjacency_matrix):
     connection_list = []
     for i in range(len(adjacency_matrix)):
         for j in range(len(adjacency_matrix)):
-            if (adjacency_matrix != 0):
+            if (adjacency_matrix[i][j] != 0):
                 
                 # Check if there is already the pair
                 exist = False
                 for x in range(len(connection_list)):
-                    if ((connection_list[x][0] == i and connection_list[x][1] == j) or (connection_list[x][1] == j and connection_list[x][0] == i)):
+                    if ((connection_list[x][0] == i and connection_list[x][1] == j) or (connection_list[x][1] == i and connection_list[x][0] == j)):
                         exist = True
                         break
 
                 if (not exist):
                     connection_list.append([i, j]) 
-
+    print(connection_list)
     return connection_list
 
 
