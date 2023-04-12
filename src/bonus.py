@@ -4,93 +4,99 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 
-def bonus():
-    # Create a geolocator object
-    geolocator = Nominatim(user_agent="my")
+def ask_locations():
+        print("===== ADD LOCATION =====")
+        # Create a geolocator object
+        geolocator = Nominatim(user_agent="my")
 
+        # Ask the location name from the user
+        location_name = input("Enter a location name: ")
 
-    done_place = False
-    places = []
+        done_location = False
+        locations = []
+        while (not done_location):
+                # Use the geolocator to find the location
+                location = geolocator.geocode(location_name, addressdetails=True)
 
-    while (not done_place):
-        # Get the place name from the user
-        place_name = input("Enter a place name: ")
+                # Check if location is found, if not try to find closest match
+                if location == None:
+                        print("Location not found in Open Street Map")
+                else: 
+                        temp = []
+                        temp.append(location.address)
+                        coordinate = [location.latitude, location.longitude]
+                        temp.append(coordinate)
+                        locations.append(temp)
+                        i = 1
+                        print("\n===== LOCATIONS =====")
+                        for location in locations:
+                                print(f"{i}. {location[0]}")
+                                i += 1
+                        print("\n")
 
-        # Use the geolocator to find the location
-        location = geolocator.geocode(place_name, addressdetails=True)
+                print("Type \"done\" to stop adding locations")
+                location_name = input("Enter a Location name: ")
+                if (location_name == "done" or location_name == "DONE"):
+                        done_location = True
 
-        # print(location)
-        # Check if location is found, if not try to find closest match
-        if location == None:
-            print("Place not found in Open Street Map")
-        else: 
-            # Print the latitude and longitude coordinates
-            print("Latitude: {0}, Longitude: {1}".format(location.latitude, location.longitude))
-            temp = []
-            temp.append(location.address)
-            coordinate = [location.latitude, location.longitude]
-            temp.append(coordinate)
-            places.append(temp)
-            i = 1
-            for place in places:
-                print(f"{i}. ", end ="")
-                print(place)
-                i += 1
-            input_done_place = input("Do you want to add another location? (y/n): ")
-            while(input_done_place!="y" and input_done_place!="Y" and input_done_place!="n" and input_done_place!="N"):
-                print("Invalid input. Please enter a valid input!")
-                input_done_place = input("Do you want to add another location? (y/n): ")
+        return locations
 
-            if (input_done_place == "n" or input_done_place == "N"):
-                done_place = True
+def ask_connection(locations_length):
+        print("===== ADD CONNECTION =====")
+        adjacency_matrix = [[0 for i in range(locations_length)] for j in range(locations_length)]
+        done_connection = False
+        connection_list = []
 
-    adjacency_matrix = [[0 for i in range(len(places))] for j in range(len(places))]
-    done_connection = False
-    connection_list = []
+        while (not done_connection):
+                continue_add_connection = input("Do you want to add connection? (y/n): ")
+                while(continue_add_connection!="y" and continue_add_connection!="Y" and continue_add_connection!="n" and continue_add_connection!="N"):
+                        print("Invalid input. Please enter a valid input!")
+                        continue_add_connection = input("Do you want to add another connection? (y/n): ")
 
-    while (not done_connection):
-        input_done_connection = input("Do you want to add connection? (y/n): ")
-        while(input_done_connection!="y" and input_done_connection!="Y" and input_done_connection!="n" and input_done_connection!="N"):
-            print("Invalid input. Please enter a valid input!")
-            input_done_connection = input("Do you want to add another location? (y/n): ")
-
-        if (input_done_connection == "y" or input_done_connection == "Y"):
-            temp = []
-            valid = False
-            while (not valid):
-                connection1 = int(input("Input the number of the first place: "))
-                if (connection1 <= len(places)):
-                    valid = True
-                    temp.append(connection1-1)
-                else :
-                    print("Invalid input. Please enter a valid input!")
+                if (continue_add_connection == "y" or continue_add_connection == "Y"):
+                        temp = []
+                        valid = False
+                        while (not valid):
+                                connection1 = int(input("Input the number of the first place: "))
+                                if (connection1 >= 1 and connection1 <= locations_length):
+                                        valid = True
+                                        temp.append(connection1-1)
+                                else :
+                                        print("Invalid input. Please enter a valid input!")
+                                
+                                
+                        valid = False
+                        while (not valid):
+                                connection2 = int(input("Input the number of the second place: "))
+                                if (connection2 >= 1 and connection2 <= locations_length):
+                                        valid = True
+                                        temp.append(connection2-1)
+                                else :
+                                        print("Invalid input. Please enter a valid input!")
                     
-                
-            valid = False
-            while (not valid):
-                connection2 = int(input("Input the number of the second place: "))
-                if (connection2 <= len(places)):
-                    valid = True
-                    temp.append(connection2-1)
+                        adjacency_matrix[connection1-1][connection2-1] = 1
+                        adjacency_matrix[connection2-1][connection1-1] = 1
+                        connection_list.append(temp)
+
                 else :
-                    print("Invalid input. Please enter a valid input!")
-            
-            adjacency_matrix[connection1-1][connection2-1] = 1
-            adjacency_matrix[connection2-1][connection1-1] = 1
-            connection_list.append(temp)
+                        done_connection = True
+        return connection_list, adjacency_matrix
+     
 
-    
-        else :
-            done_connection = True
+def bonus():
 
-    make_adjacency_weighted_matrix(places, adjacency_matrix)
+    locations = ask_locations()
 
-    return places, adjacency_matrix, connection_list
+    connection_list, adjacency_matrix = ask_connection(len(locations))        
 
-def map_visualizer(places, connection_list, start_index, goal_index, path):
+    make_adjacency_weighted_matrix(locations, adjacency_matrix)
+
+    return locations, adjacency_matrix, connection_list
+
+def map_visualizer(locations, connection_list, start_index, goal_index, path):
         data = []
-        for i in range(len(places)):
-                data.append([places[i][0], places[i][1][0], places[i][1][1], 1])
+        for i in range(len(locations)):
+                data.append([locations[i][0], locations[i][1][0], locations[i][1][1], 1])
 
         df = pd.DataFrame(data, columns=['place', 'lat', 'lon', 'size'])
 
@@ -98,16 +104,16 @@ def map_visualizer(places, connection_list, start_index, goal_index, path):
                                 lat='lat',
                                 lon='lon',
                                 color='place',
-                                center={'lat':-6.891809,
-                                        'lon':107.610363},
+                                center={'lat':locations[start_index][1][0],
+                                        'lon':locations[start_index][1][1]},
                                 zoom=15,
                                 size='size')
         
         # figure connection
         for i in range (len(connection_list)):
                 connection = []
-                connection.append([places[connection_list[i][0]][1][0], places[connection_list[i][0]][1][1]])
-                connection.append([places[connection_list[i][1]][1][0], places[connection_list[i][1]][1][1]])
+                connection.append([locations[connection_list[i][0]][1][0], locations[connection_list[i][0]][1][1]])
+                connection.append([locations[connection_list[i][1]][1][0], locations[connection_list[i][1]][1][1]])
                 df1 = pd.DataFrame(connection, columns=['lat', 'lon']) 
                 if (i == 0):
                         fig.add_trace(go.Scattermapbox(
@@ -132,7 +138,7 @@ def map_visualizer(places, connection_list, start_index, goal_index, path):
         # figure path
         connection = []
         for i in range (len(path)):
-                connection.append([places[path[i]][1][0], places[path[i]][1][1]])
+                connection.append([locations[path[i]][1][0], locations[path[i]][1][1]])
 
         df2 = pd.DataFrame(connection, columns=['lat', 'lon'])          
         fig.add_trace(go.Scattermapbox(
@@ -141,13 +147,13 @@ def map_visualizer(places, connection_list, start_index, goal_index, path):
                 lon = df2.lon.tolist(),
                 marker = {'color': "green", 
                         "size": 20},
-                name = 'path'
+                name = 'path from start to goal'
                 # title = 'Dilewati'   
         ))
 
         # figure start
         connection = []
-        connection.append([places[start_index][1][0], places[start_index][1][1]])
+        connection.append([locations[start_index][1][0], locations[start_index][1][1]])
         
         df3 = pd.DataFrame(connection, columns=['lat', 'lon'])          
         fig.add_trace(go.Scattermapbox(
@@ -170,7 +176,7 @@ def map_visualizer(places, connection_list, start_index, goal_index, path):
 
         # figure goal
         connection = []
-        connection.append([places[goal_index][1][0], places[goal_index][1][1]])
+        connection.append([locations[goal_index][1][0], locations[goal_index][1][1]])
         
         df3 = pd.DataFrame(connection, columns=['lat', 'lon'])          
         fig.add_trace(go.Scattermapbox(
