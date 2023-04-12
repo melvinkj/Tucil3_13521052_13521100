@@ -36,12 +36,12 @@ def read_file(file_name):
             matrix = []
             for i in range(places_count):
                 line = file.readline().rstrip()
-                temp = [int(num) for num in line.split(' ')]
+                temp = [float(num) for num in line.split(' ')]
                 matrix.append(temp)
 
 
     except FileNotFoundError:
-        print(f"No such file with '{file_name}'. Please input valid filename!")
+        print(f"No such file named '{file_name}' in input directory. Please input a valid filename!")
         places = False
         matrix = False
 
@@ -80,12 +80,12 @@ def read_file_gui(file_name):
             matrix = []
             for i in range(places_count):
                 line = file.readline().rstrip()
-                temp = [int(num) for num in line.split(' ')]
+                temp = [float(num) for num in line.split(' ')]
                 matrix.append(temp)
 
 
     except FileNotFoundError:
-        print(f"No such file with '{file_name}'. Please input valid filename!")
+        print(f"No such file named '{file_name}' in input directory. Please input a valid filename!")
         places = False
         matrix = False
 
