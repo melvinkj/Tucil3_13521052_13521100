@@ -314,9 +314,9 @@ class App(customtkinter.CTk):
                     for j in range(len(App.adjMatrix[0])):
                         if(App.adjMatrix[i][j]!=0):
                             if(utils.checkEdges(i,j,edges)):
-                                graph.add_edge(placeNames[i], placeNames[j], color = 'blue', weight=App.adjMatrix[i][j])
+                                graph.add_edge(placeNames[i], placeNames[j], color = 'blue', weight=round(App.adjMatrix[i][j],2))
                             else:
-                                graph.add_edge(placeNames[i], placeNames[j], color = 'black', weight=App.adjMatrix[i][j])
+                                graph.add_edge(placeNames[i], placeNames[j], color = 'black', weight=round(App.adjMatrix[i][j],2))
                 
                 # coloring nodes
                 color_map = []
@@ -362,7 +362,8 @@ class App(customtkinter.CTk):
                 self.cost_output_label.configure(text =f'{App.cost}')
 
             else:
-                self.path_output_label.configure(text ="No Path was Found!")
+                self.path_output_label.configure(text ="\nNo Path was Found!", color = 'red')
+                self.cost_output_label.configure(text ="0")
         else:
             self.validation_label.configure(text="Input valid file first!",
                                             text_color="red")
