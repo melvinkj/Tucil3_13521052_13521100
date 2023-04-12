@@ -45,7 +45,7 @@ def algorithm_executor(inp, places, matrix, start_index, goal_index):
 
     # Print result    
     if paths:
-        print(f"Shortest path from node {start_index+1} to node {goal_index+1}: {paths}")
+        print(f"Shortest path from node {start_index+1} to node {goal_index+1}: {[(path+1) for path in paths]}")
         print(f"Cost: {cost}")
     else:
         print(f"No path found from node {start_index+1} to node {goal_index+1}")
