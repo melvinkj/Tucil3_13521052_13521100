@@ -1,12 +1,5 @@
 from utils import *
 from queue import PriorityQueue as PQ
-adj_matrix = [
-    [0, 3, 0, 1, 0],
-    [2, 0, 4, 0, 0],
-    [0, 4, 0, 5, 1],
-    [100, 0, 5, 0, 3],
-    [0, 0, 1, 3, 0]
-]
 
 def visitedNode(node, path):
     for i in range(len(path)):
